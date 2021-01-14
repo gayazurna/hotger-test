@@ -1,15 +1,21 @@
 import React from 'react'
 
+import {
+  StyleSearchResults,
+  StyleSearchResult,
+  StyleSearchResultName,
+} from './style'
+
 const SearchResults = ({ countries, onShowMoreClick }) => {
   return (
-    <div>
+    <StyleSearchResults>
       {countries.map((country) => (
-        <div key={country.name}>
-          <div>{country?.name}</div>
+        <StyleSearchResult key={country.name}>
+          <StyleSearchResultName>{country?.name}</StyleSearchResultName>
           <button onClick={() => onShowMoreClick(country)}>show more</button>
-        </div>
+        </StyleSearchResult>
       ))}
-    </div>
+    </StyleSearchResults>
   )
 }
 

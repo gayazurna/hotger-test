@@ -1,10 +1,11 @@
 import React from 'react'
+import { StyledFlag } from './style'
 
 const CountryInfo = ({ name, image, iso, languages, borderCountries }) => {
   return (
     <div>
       <h2>
-        Country: {name} | <img src={image} alt='' />
+        Country: {name} | <StyledFlag src={image} alt='' />
       </h2>
       <p>Code: {iso}</p>
 
