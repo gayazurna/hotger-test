@@ -4,6 +4,7 @@ import {
   StyleSearchResults,
   StyleSearchResult,
   StyleSearchResultName,
+  StyleShowButton,
 } from './style'
 
 const SearchResults = ({ countries, onShowMoreClick }) => {
@@ -12,7 +13,9 @@ const SearchResults = ({ countries, onShowMoreClick }) => {
       {countries.map((country) => (
         <StyleSearchResult key={country.name}>
           <StyleSearchResultName>{country?.name}</StyleSearchResultName>
-          <button onClick={() => onShowMoreClick(country)}>show more</button>
+          <StyleShowButton onClick={() => onShowMoreClick(country)}>
+            Show More
+          </StyleShowButton>
         </StyleSearchResult>
       ))}
     </StyleSearchResults>

@@ -1,14 +1,12 @@
 import React, { useContext } from 'react'
 import CountryInfo from '../CountryInfo'
 import SearchResults from '../SearchResults'
-import { SET_COUNTRY_VIEW, StorageContext } from '../../context/storage'
+import { SET_COUNTRY_VIEW, StoreContext } from '../../context/store'
 
 const MainContent = () => {
-  const { state, dispatch } = useContext(StorageContext)
+  const { state, dispatch } = useContext(StoreContext)
 
   const { countryInfo } = state
-
-  console.log('countryInfo', countryInfo)
 
   return (
     <div>
@@ -16,7 +14,7 @@ const MainContent = () => {
         <CountryInfo
           name={countryInfo.name}
           image={countryInfo.flag}
-          iso={countryInfo.numericCode}
+          code={countryInfo.alpha3Code}
           languages={countryInfo.languages}
           borderCountries={countryInfo.borders}
         />

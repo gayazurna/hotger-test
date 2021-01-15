@@ -1,17 +1,17 @@
 import React, { useContext } from 'react'
+import { StyleForm, StyleInput, StyleButton } from './style'
 
 import {
-  StorageContext,
+  StoreContext,
   SET_COUNTRY_LIST,
   SET_COUNTRY_VIEW,
-} from '../../context/storage'
+} from '../../context/store'
 
 const SearchForm = () => {
   const [input, setInput] = React.useState('')
-  const { state, dispatch } = useContext(StorageContext)
+  const { state, dispatch } = useContext(StoreContext)
 
   const changeHandler = (e) => {
-    e.preventDefault()
     setInput(e.target.value)
   }
 
@@ -35,18 +35,25 @@ const SearchForm = () => {
   const clickHandler = async () => {
     await getCountryInfo(input)
   }
-
+  const keypressHandler = (e) => {
+    if (e.key === 'Enter') {
+      clickHandler()
+    }
+  }
   return (
-    <div>
-      <input
+    <StyleForm>
+      <StyleInput
         onChange={changeHandler}
+        onKeyPress={keypressHandler}
         value={input}
         type='text'
-        placeholder='Country name'
+        placeholder='Type here a country name'
         required
       />
-      <button onClick={clickHandler}>Search</button>
-    </div>
+      <StyleButton onClick={clickHandler}>
+        <i class='fa fa-search'></i>
+      </StyleButton>
+    </StyleForm>
   )
 }
 

@@ -2,18 +2,23 @@ import React from 'react'
 import ReactDom from 'react-dom'
 
 import SearchForm from './components/SearchForm'
-import { StorageProvider } from './context/storage'
+import { StoreProvider } from './context/store'
 import { MainContent } from './components/MainContent'
-import { GlobalStyle, StyleHeading } from './style'
+import { GlobalStyle, StyleApp, StyleHeading } from './style'
 
 const App = () => {
   return (
-    <StorageProvider>
-      <GlobalStyle />
-      <StyleHeading>Country Search</StyleHeading>
-      <SearchForm />
-      <MainContent />
-    </StorageProvider>
+    <StoreProvider>
+      <StyleApp>
+        <GlobalStyle />
+        <StyleHeading>
+          Country Search <i class='fas fa-globe'></i>
+        </StyleHeading>
+
+        <SearchForm />
+        <MainContent />
+      </StyleApp>
+    </StoreProvider>
   )
 }
 

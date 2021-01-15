@@ -1,28 +1,47 @@
 import React from 'react'
-import { StyledFlag } from './style'
+import {
+  StyleCountryInfo,
+  StyledFlag,
+  StyleFavButton,
+  StyleListItem,
+} from './style'
 
-const CountryInfo = ({ name, image, iso, languages, borderCountries }) => {
+const CountryInfo = ({ name, image, code, languages, borderCountries }) => {
+  const [favourites, setFavourites] = React.useState([])
+
+  const onFavHandler = () => {
+    const newFav = [...images]
+    localStorage.setItem('favourites', JSON.stringify(newFav))
+    setImages(newFav)
+  }
   return (
-    <div>
+    <StyleCountryInfo>
       <h2>
-        Country: {name} | <StyledFlag src={image} alt='' />
+        {name} <StyledFlag src={image} alt='' />
       </h2>
-      <p>Code: {iso}</p>
+      <p>Code: {code}</p>
 
-      <p>
+      <ul>
         Languages:{' '}
         {languages.map((lang) => (
-          <span key={lang.name}>{lang.name}</span>
+          <StyleListItem key={lang.name}>{lang.name}</StyleListItem>
         ))}
-      </p>
+      </ul>
 
-      <p>
+      <ul>
         Borders:{' '}
         {borderCountries.map((borderCountry) => (
-          <span key={borderCountry}>{borderCountry}</span>
+          <StyleListItem key={borderCountry}>
+            {borderCountry}
+            <button></button>
+          </StyleListItem>
         ))}
-      </p>
-    </div>
+      </ul>
+      <StyleFavButton onClick={onFavHandler}>
+        <i class='far fa-heart'></i>
+        Add To Favourites
+      </StyleFavButton>
+    </StyleCountryInfo>
   )
 }
 

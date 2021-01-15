@@ -5,7 +5,7 @@ const INITIAL_STATE = {
   favorites: [],
 }
 
-const StorageContext = createContext({
+const StoreContext = createContext({
   state: INITIAL_STATE,
 })
 
@@ -21,14 +21,14 @@ const reducer = (state, action) => {
   }
 }
 
-const StorageProvider = ({ children }) => {
+const StoreProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE)
 
   return (
-    <StorageContext.Provider value={{ state, dispatch }}>
+    <StoreContext.Provider value={{ state, dispatch }}>
       {children}
-    </StorageContext.Provider>
+    </StoreContext.Provider>
   )
 }
 
-export { StorageContext, StorageProvider }
+export { StoreContext, StoreProvider }
