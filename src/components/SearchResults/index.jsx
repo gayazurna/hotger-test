@@ -1,24 +1,24 @@
 import React from 'react'
 
 import {
-  StyleSearchResults,
-  StyleSearchResult,
-  StyleSearchResultName,
-  StyleShowButton,
+  StyledSearchResults,
+  StyledSearchResult,
+  StyledSearchResultName,
+  StyledShowButton,
 } from './style'
 
 const SearchResults = ({ countries, onShowMoreClick }) => {
   return (
-    <StyleSearchResults>
+    <StyledSearchResults>
       {countries.map((country) => (
-        <StyleSearchResult key={country.name}>
-          <StyleSearchResultName>{country?.name}</StyleSearchResultName>
-          <StyleShowButton onClick={() => onShowMoreClick(country)}>
+        <StyledSearchResult key={country.name}>
+          <StyledSearchResultName>{country?.name}</StyledSearchResultName>
+          <StyledShowButton onClick={() => onShowMoreClick(country)}>
             Show More
-          </StyleShowButton>
-        </StyleSearchResult>
+          </StyledShowButton>
+        </StyledSearchResult>
       ))}
-    </StyleSearchResults>
+    </StyledSearchResults>
   )
 }
 

@@ -1,11 +1,7 @@
 import React, { useContext } from 'react'
-import { StyleForm, StyleInput, StyleButton } from './style'
-
-import {
-  StoreContext,
-  SET_COUNTRY_LIST,
-  SET_COUNTRY_VIEW,
-} from '../../context/store'
+import { StyledForm, StyledInput, StyledButton } from './style'
+import { StoreContext } from '../../context/store'
+import { SET_COUNTRY_LIST, SET_COUNTRY_VIEW } from '../../context/actions'
 
 const SearchForm = () => {
   const [input, setInput] = React.useState('')
@@ -40,9 +36,10 @@ const SearchForm = () => {
       clickHandler()
     }
   }
+
   return (
-    <StyleForm>
-      <StyleInput
+    <StyledForm>
+      <StyledInput
         onChange={changeHandler}
         onKeyPress={keypressHandler}
         value={input}
@@ -50,10 +47,10 @@ const SearchForm = () => {
         placeholder='Type here a country name'
         required
       />
-      <StyleButton onClick={clickHandler}>
+      <StyledButton onClick={clickHandler}>
         <i class='fa fa-search'></i>
-      </StyleButton>
-    </StyleForm>
+      </StyledButton>
+    </StyledForm>
   )
 }
 

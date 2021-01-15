@@ -1,15 +1,17 @@
 import styled from 'styled-components'
 
-const StyleForm = styled.div`
+const StyledForm = styled.div`
   font-size: 36px;
+  display: flex;
+  flex-direction: row;
 `
-const StyleInput = styled.input`
-  width: 400px;
+const StyledInput = styled.input`
+  width: 428px;
   padding: 8px 8px;
   font-size: 20px;
   margin-right: 10px;
 `
-const StyleButton = styled.button`
+const StyledButton = styled.button`
   width: 60px;
   background-color: #a5d6a7;
   cursor: pointer;
@@ -17,7 +19,6 @@ const StyleButton = styled.button`
   border: none;
   border-radius: 4px;
   padding: 10px;
-
   &:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2),
       0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -27,4 +28,4 @@ const StyleButton = styled.button`
   }
 `
 
-export { StyleForm, StyleInput, StyleButton }
+export { StyledForm, StyledInput, StyledButton }

@@ -4,22 +4,27 @@ const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
-    list-style: none;
     outline: none;
     font-family: 'Roboto';
     box-sizing: border-box;
     color: #263238;
   }
 `
-const StyleApp = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 1400px;
+const StyledApp = styled.div`
+  max-width: 800px;
+  margin: 0 auto;
 `
-const StyleHeading = styled.h1`
+const StyledColumns = styled.div`
+  display: flex;
+`
+const StyledHeading = styled.h1`
+  display: flex;
+  justify-content: center;
   font-size: 30px;
-  margin: 50px 0 40px 0;
+  margin: 60px 0 50px 0;
+`
+const StyledIcon = styled.span`
+  padding-left: 16px;
 `
 
-export { GlobalStyle, StyleApp, StyleHeading }
+export { GlobalStyle, StyledApp, StyledHeading, StyledColumns, StyledIcon }

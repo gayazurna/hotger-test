@@ -1,7 +1,9 @@
 import React, { useContext } from 'react'
 import CountryInfo from '../CountryInfo'
 import SearchResults from '../SearchResults'
-import { SET_COUNTRY_VIEW, StoreContext } from '../../context/store'
+import { SET_COUNTRY_VIEW } from '../../context/actions'
+import { StoreContext } from '../../context/store'
+import { StyledMainContent } from './style'
 
 const MainContent = () => {
   const { state, dispatch } = useContext(StoreContext)
@@ -9,7 +11,7 @@ const MainContent = () => {
   const { countryInfo } = state
 
   return (
-    <div>
+    <StyledMainContent>
       {countryInfo.name && (
         <CountryInfo
           name={countryInfo.name}
@@ -28,7 +30,7 @@ const MainContent = () => {
           }
         />
       )}
-    </div>
+    </StyledMainContent>
   )
 }
 

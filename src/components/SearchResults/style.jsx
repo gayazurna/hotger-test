@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 
-const StyleSearchResults = styled.div`
-  width: 800px;
+const StyledSearchResults = styled.div`
+  width: 500px;
   margin-top: 40px;
 `
 
-const StyleSearchResult = styled.div`
+const StyledSearchResult = styled.div`
   padding: 10px;
   display: flex;
   justify-content: space-between;
@@ -15,14 +15,14 @@ const StyleSearchResult = styled.div`
   }
 `
 
-const StyleSearchResultName = styled.div`
+const StyledSearchResultName = styled.div`
   font-size: 20px;
   text-align: center;
   height: 40px;
   line-height: 40px;
 `
 
-const StyleShowButton = styled.div`
+const StyledShowButton = styled.div`
   width: 100px;
   background-color: #a5d6a7;
   cursor: pointer;
@@ -43,8 +43,8 @@ const StyleShowButton = styled.div`
 `
 
 export {
-  StyleSearchResults,
-  StyleSearchResult,
-  StyleSearchResultName,
-  StyleShowButton,
+  StyledSearchResults,
+  StyledSearchResult,
+  StyledSearchResultName,
+  StyledShowButton,
 }

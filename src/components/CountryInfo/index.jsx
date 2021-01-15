@@ -1,47 +1,91 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { StoreContext } from '../../context/store'
 import {
-  StyleCountryInfo,
+  SET_COUNTRY_VIEW,
+  SET_COUNTRY_LIST,
+  SET_FAVOURITES,
+  REMOVE_FROM_FAVOURITES,
+} from '../../context/actions'
+
+import {
+  StyledCountryInfo,
   StyledFlag,
-  StyleFavButton,
-  StyleListItem,
+  StyledFavButton,
+  StyledListItem,
+  StyledCountryName,
+  StyledRemoveButton,
+  StyledBorderButton,
+  StyledIcon,
 } from './style'
 
 const CountryInfo = ({ name, image, code, languages, borderCountries }) => {
-  const [favourites, setFavourites] = React.useState([])
+  const { state, dispatch } = useContext(StoreContext)
 
-  const onFavHandler = () => {
-    const newFav = [...images]
-    localStorage.setItem('favourites', JSON.stringify(newFav))
-    setImages(newFav)
+  const { favourites, countryInfo } = state
+
+  const isFavourite = favourites.some((fav) => fav.alpha3Code === code)
+  console.log('FAVOR', isFavourite)
+
+  const onFavHandler = (country) => {
+    dispatch({ type: SET_FAVOURITES, payload: country })
   }
+  const onRemoveFavHandler = (country) => {
+    dispatch({ type: REMOVE_FROM_FAVOURITES, payload: country.alpha3Code })
+  }
+
+  const onCountryClick = async (countryCode) => {
+    try {
+      const response = await fetch(
+        `https://restcountries.eu/rest/v2/alpha/${countryCode}`
+      )
+      const result = await response.json()
+      dispatch({ type: SET_COUNTRY_VIEW, payload: result })
+      dispatch({ type: SET_COUNTRY_LIST, payload: [] })
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
   return (
-    <StyleCountryInfo>
-      <h2>
+    <StyledCountryInfo>
+      <StyledCountryName>
         {name} <StyledFlag src={image} alt='' />
-      </h2>
+      </StyledCountryName>
       <p>Code: {code}</p>
 
       <ul>
         Languages:{' '}
         {languages.map((lang) => (
-          <StyleListItem key={lang.name}>{lang.name}</StyleListItem>
+          <StyledListItem key={lang.name}>{lang.name}</StyledListItem>
         ))}
       </ul>
 
       <ul>
         Borders:{' '}
         {borderCountries.map((borderCountry) => (
-          <StyleListItem key={borderCountry}>
-            {borderCountry}
-            <button></button>
-          </StyleListItem>
+          <StyledListItem key={borderCountry}>
+            <StyledBorderButton onClick={() => onCountryClick(borderCountry)}>
+              {borderCountry}
+            </StyledBorderButton>
+          </StyledListItem>
         ))}
       </ul>
-      <StyleFavButton onClick={onFavHandler}>
-        <i class='far fa-heart'></i>
-        Add To Favourites
-      </StyleFavButton>
-    </StyleCountryInfo>
+      {isFavourite ? (
+        <StyledRemoveButton onClick={() => onRemoveFavHandler(countryInfo)}>
+          <StyledIcon>
+            <i class='fas fa-trash-alt'></i>
+          </StyledIcon>
+          Remove From Favourites
+        </StyledRemoveButton>
+      ) : (
+        <StyledFavButton onClick={() => onFavHandler(countryInfo)}>
+          <StyledIcon>
+            <i class='fas fa-heart'></i>
+          </StyledIcon>
+          Add To Favourites
+        </StyledFavButton>
+      )}
+    </StyledCountryInfo>
   )
 }
 
