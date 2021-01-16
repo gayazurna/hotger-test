@@ -16,6 +16,7 @@ const StyledApp = styled.div`
 `
 const StyledColumns = styled.div`
   display: flex;
+  // justify-conent: center;
 `
 const StyledHeading = styled.h1`
   display: flex;
