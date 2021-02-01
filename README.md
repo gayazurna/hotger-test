@@ -1,6 +1,5 @@
-# Test Task Hotger ⚡️
+# Country Search ⚡️
 
-⚡️ Country Search
 
 ## Getting Started 🚀
 
